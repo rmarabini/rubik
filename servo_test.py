@@ -1,22 +1,84 @@
 import time
-from  rotador import *
+from  servo import *
 
-servoGrip = servo(RIGHT_GRIPPER)
-servoHold = servo(RIGHT_HOLDER)
-# servoGrip.open(RIGHT_GRIPPER); servoGrip.open(LEFT_GRIPPER)
-servoGrip.placeCube()
-servoHold.reset()
+servo = Servo()
 
+#servo.openForCube()
 print("press any key to continue")
-nombre = input()
-servoGrip.grip()
+time.sleep(2)
+###nombre = input()
+servo.grip()
+##exit(0)
+time.sleep(1)
+servo.relax()
 
-servoHold = servo(RIGHT_HOLDER)
-servoHold.rotateClock(RIGHT_HOLDER,1)
-servoHold.rotateCounterClock(RIGHT_HOLDER,1)
+
+for i in range(5):
+    servo.clockwiseR()
+    time.sleep(0.5)
+    servo.openR()
+    time.sleep(0.5)
+    servo.counterClockwiseR()
+    time.sleep(0.5)
+    servo.grip()
+    time.sleep(0.5)
+    servo.relax()
+    time.sleep(0.5)
+    servo.clockwiseL()
+    time.sleep(0.5)
+    servo.openL()
+    time.sleep(0.5)
+    servo.counterClockwiseL()
+    time.sleep(0.5)
+    servo.grip()
+    time.sleep(0.5)
+    servo.relax()
+    time.sleep(0.5)
 
 
 
-del servoGrip
-del servoHold
+print("RIGHT holder")
+for i in range(5):
+    servo.clockwiseR()
+    time.sleep(0.5)
+    servo.openR()
+    time.sleep(0.5)
+    servo.counterClockwiseR()
+    time.sleep(0.5)
+    servo.grip()
+    time.sleep(0.5)
+    servo.relax()
+    time.sleep(0.5)
+
+#servo.initialState()
+
+print("LEFT holder")
+for i in range(5):
+    servo.clockwiseL()
+    time.sleep(0.5)
+    servo.openL()
+    time.sleep(0.5)
+    servo.counterClockwiseL()
+    time.sleep(0.5)
+    servo.grip()
+    time.sleep(0.5)
+    servo.relax()
+    time.sleep(0.5)
+
+print("GREEPER")
+for i in range(5):
+    servo.clockwiseL()
+    time.sleep(1)
+    servo.counterClockwiseL()
+    servo.relax()
+    time.sleep(1)
+    servo.clockwiseR()
+    time.sleep(1)
+    servo.counterClockwiseR()
+    servo.relax()
+    time.sleep(1)
+
+time.sleep(2)
+servo.initialState()
+del servo
 
