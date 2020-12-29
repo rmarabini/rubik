@@ -1,7 +1,9 @@
-# rotate cube
+# access servos
 import time
 import Adafruit_PCA9685
 
+
+# servos are attached to this port in the PCA9685
 LEFT_GRIPPER  = 5
 LEFT_HOLDER   = 4
 RIGHT_GRIPPER = 7
@@ -12,7 +14,7 @@ STEP = 1  # 5 * 5 * 3 * 3
 WAIT=0.5
 
 class Servo():
-    """ class to manage servo TowerPro MG995R"""
+    """ class to manage servo TowerPro MG995R using a PCA9685 unit"""
     # Set maximum and minimum values of the servos
     # sets min, max pwm frequency
     servo_min_max = {}
@@ -59,7 +61,7 @@ class Servo():
         self.pwm.set_pwm(LEFT_GRIPPER, 0, self.min[LEFT_GRIPPER])
 
     def closeR(self):
-        "close open right gripper "
+        "close  right gripper "
         self.pwm.set_pwm(RIGHT_GRIPPER, 0, self.min[RIGHT_GRIPPER])
 
     def relax(self):
@@ -90,7 +92,9 @@ class Servo():
                          self.min[RIGHT_GRIPPER])
 
     def clockwiseL(self, interval=0):
-        """ rotate servo clockwise"""
+        """ rotate left servo clockwise. Clockwise is defined as follow
+	    Using your right hand touch the cube face with your thump.
+	    the the direction pointed by the other fingers is clockwise"""
         if interval !=0:
            self.pwm.set_pwm(LEFT_HOLDER, 0, self.max[LEFT_HOLDER])
         else:
@@ -100,7 +104,7 @@ class Servo():
                time.sleep(SLEEP)
     
     def clockwiseR(self, interval=0):
-        """ rotate servo clockwise"""
+        """ rotate right servo clockwise"""
         if interval !=0:
            self.pwm.set_pwm(RIGHT_HOLDER, 0, self.max[RIGHT_HOLDER])
         else:
@@ -131,6 +135,7 @@ class Servo():
                time.sleep(SLEEP)
 
     def rotNextHorizontal(self, interval=0, wait=WAIT):
+        """rotate given by servo 4"""
         self.openL(); time.sleep(wait)
         self.clockwiseR(interval); time.sleep(wait)
         self.closeL(); time.sleep(wait)
@@ -140,6 +145,7 @@ class Servo():
         self.relax(); time.sleep(wait)
 
     def rotNextVertical(self, interval=0, wait=WAIT):
+        """totation  perpendicular to horizontal"""
         self.openR(); time.sleep(wait)
         self.clockwiseL(interval); time.sleep(wait)
         self.closeR(); time.sleep(wait)
@@ -166,8 +172,8 @@ class Servo():
             self.relax(); time.sleep(wait)
 
     def rotDown(self, interval=0, wait=WAIT, rounds=1):
-        """Rotate down face clockwise 90 degrees and go back
-           to standard possition"""
+        """Rotate down face clockwise 90 * rounds degrees """
+        print("rotDown", flush=True)
         for i in range(rounds):
             self.clockwiseR(interval); time.sleep(wait)
             self.openR(); time.sleep(wait)
@@ -176,8 +182,8 @@ class Servo():
             self.relax(); time.sleep(wait)
 
     def rotBack(self, interval=0, wait=WAIT, rounds=1):
-        """Rotate back face clockwise 90 degrees and go back
-           to standard possition"""
+        """Rotate back face clockwise 90 * rounds degrees """
+        print("rotBack", flush=True)
         for i in range(rounds):
             self.clockwiseL(interval); time.sleep(wait)
             self.openL(); time.sleep(wait)
@@ -187,8 +193,8 @@ class Servo():
 
 
     def rotLeft(self, interval=0, wait=WAIT, rounds=1):
-        """Rotate left face clockwise 90 degrees and go back
-           to standard possition"""
+        """Rotate left face clockwise 90 * rounds degrees"""
+        print("rotLeft", flush=True)
         self.openR(); time.sleep(wait)
         self.clockwiseL(interval); time.sleep(wait)
         self.closeR(); time.sleep(wait)
@@ -215,8 +221,8 @@ class Servo():
                 self.openR(); time.sleep(wait)
 
     def rotRight(self, interval=0, wait=WAIT, rounds=1):
-        """Rotate left face clockwise 90 degrees and go back
-           to standard possition"""
+        """Rotate left face clockwise 90 * rounds degrees"""
+        print("rotRight", flush=True)
         self.openL(); time.sleep(wait)
         self.clockwiseR(interval); time.sleep(wait)
         self.closeL(); time.sleep(wait)
@@ -243,6 +249,7 @@ class Servo():
                 self.openL(); time.sleep(wait)
 
     def rotUp(self, wait=WAIT, rounds=1):
+        print("rotUp", flush=True)
         for i in range(2):
             self.openR(); time.sleep(wait)
             self.clockwiseL(); time.sleep(wait)
@@ -269,6 +276,7 @@ class Servo():
             self.relax(); time.sleep(wait)
         
     def rotFront(self, wait=WAIT, rounds=1):
+        print("rotFront", flush=True)
         for i in range(2):
             self.openL(); time.sleep(wait)
             self.clockwiseR(); time.sleep(wait)
@@ -294,12 +302,5 @@ class Servo():
             self.closeR(); time.sleep(wait)
             self.relax(); time.sleep(wait)
         
-
-"""
-w w r
-r w b
-o y y
-"""
-
 
 

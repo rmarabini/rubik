@@ -1,5 +1,6 @@
 import time
 from  servo import *
+"""Testing the servos"""
 
 servo = Servo()
 
