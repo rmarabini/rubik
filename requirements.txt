@@ -1,0 +1,19 @@
+total 7736
+-rw-r--r-- 1 pi pi    1199 Aug 27 20:11 takePictures.py
+-rw-r--r-- 1 pi pi    1282 Aug 27 20:11 solver.py
+-rw-r--r-- 1 pi pi    1468 Aug 27 20:11 servo_test.py
+-rw-r--r-- 1 pi pi   11439 Aug 27 20:11 servo.py
+-rw-r--r-- 1 pi pi     536 Aug 27 20:11 camera_test.py
+-rw-r--r-- 1 pi pi     834 Aug 27 20:11 camera.py
+-rw-r--r-- 1 pi pi     120 Aug 27 20:11 README.md
+-rw-r--r-- 1 pi pi     954 Aug 27 20:13 main.py
+-rw-r--r-- 1 pi pi    5035 Aug 27 20:14 calibrate.py
+drwxr-xr-x 2 pi pi    4096 Aug 27 20:14 __pycache__
+-rw-r--r-- 1 pi pi 2662434 Aug 27 20:32 image.jpg
+-rw-r--r-- 1 pi pi  843965 Aug 27 21:37 front.jpg
+-rw-r--r-- 1 pi pi  858056 Aug 27 21:38 left.jpg
+-rw-r--r-- 1 pi pi  866018 Aug 27 21:38 back.jpg
+-rw-r--r-- 1 pi pi  867089 Aug 27 21:38 right.jpg
+-rw-r--r-- 1 pi pi  873667 Aug 27 21:38 up.jpg
+-rw-r--r-- 1 pi pi  880388 Aug 27 21:39 down.jpg
+-rw-r--r-- 1 pi pi       0 Aug 27 21:53 requirements.txt
